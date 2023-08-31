@@ -29,7 +29,7 @@ organizations:
     url: https://www.ens.psl.eu
 education:
   courses:
-    - course: PhD in Physics and Computational Neuroscience
+    - course: PhD student in Physics and Computational Neuroscience
       institution: Ecole normale supérieure
       year: ""
     - course: Master MVA (Mathematics Applied to Artificial Intelligence)
