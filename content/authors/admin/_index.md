@@ -26,7 +26,7 @@ social:
     link: https://www.linkedin.com/in/hugo-ninou/
   - icon: cv
     icon_pack: ai
-    link: uploads/resume.pdf
+    link: assets/media/cv_hugo_ninou_english.pdf
 organizations:
   - name: Ecole normale supérieure
     url: https://www.ens.psl.eu
