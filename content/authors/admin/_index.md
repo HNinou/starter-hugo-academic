@@ -1,5 +1,5 @@
 ---
-avatar_filename: img_2935.jpg
+avatar_filename: img_2935.png
 bio: ""
 interests:
   - Physics
