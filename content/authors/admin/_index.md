@@ -6,9 +6,6 @@ interests:
   - Computational neuroscience
   - Artificial Intelligence
 social:
-  - icon: envelope
-    icon_pack: fas
-    link: /#contact
   - icon: twitter
     icon_pack: fab
     link: https://twitter.com/NinouHugo
@@ -26,7 +23,7 @@ social:
     link: https://www.linkedin.com/in/hugo-ninou/
   - icon: cv
     icon_pack: ai
-    link: assets/media/cv_hugo_ninou_english.pdf
+    link: resume.pdf
 organizations:
   - name: Ecole normale supérieure
     url: https://www.ens.psl.eu
