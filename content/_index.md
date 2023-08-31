@@ -11,8 +11,8 @@ sections:
       title: Biography
       # Choose a user profile to display (a folder name within `content/authors/`)
       username: admin
-
- - block: collection
+    
+  - block: collection
     id: posts
     content:
       title: Recent Posts
