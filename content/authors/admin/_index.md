@@ -32,7 +32,7 @@ education:
     - course: PhD student in Physics and Computational Neuroscience
       institution: Ecole normale supérieure | PSL
       year: ""
-    - course: ENS disploma, major in physics
+    - course: ENS disploma, major in Physics
       year: 2022
       institution: Ecole normale supérieure | PSL
     - course: Master MVA (Mathematics Applied to AI)
