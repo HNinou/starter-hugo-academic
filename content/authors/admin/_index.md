@@ -25,8 +25,10 @@ social:
     icon_pack: ai
     link: uploads/resume.pdf
 organizations:
-  - name: Ecole normale supérieure
+  - name: Ecole normale supérieure | PSL
     url: https://www.ens.psl.eu
+  - name: Laboratoire de Physique de l'Ecole normale supérieure
+    url: https://www.lpens.ens.psl.eu
 education:
   courses:
     - course: PhD student in Physics and Computational Neuroscience
