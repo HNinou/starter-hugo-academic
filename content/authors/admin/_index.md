@@ -53,6 +53,6 @@ title: Hugo Ninou
 first_name: Alice
 email: ""
 ---
-PhD student in statistical physics applied to neuroscience at ENS Paris. Control of maturating biological neural networks
+I am a PhD student in statistical physics applied to neuroscience at ENS Paris. My work focuses on the control of maturating biological neural networks
 
 {style="text-align: justify;"}
