@@ -39,10 +39,10 @@ education:
       institution: Ecole normale supérieure | PSL
     - course: Master MVA (Mathematics Applied to AI)
       institution: Ecole normale supérieure Paris Saclay
-      year: 2021
+      year: 2022
     - course: Master ICFP in Theoretical Physics
       institution: Ecole normale supérieure | PSL
-      year: 2020
+      year: 2021
 superuser: true
 status:
   icon: ☕️
