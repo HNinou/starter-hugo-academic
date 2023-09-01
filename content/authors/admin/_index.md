@@ -30,13 +30,16 @@ organizations:
 education:
   courses:
     - course: PhD student in Physics and Computational Neuroscience
-      institution: Ecole normale supérieure
+      institution: Ecole normale supérieure | PSL
       year: ""
-    - course: Master MVA (Mathematics Applied to Artificial Intelligence)
+    - course: ENS disploma, major in physics
+      year: 2022
+      institution: Ecole normale supérieure | PSL
+    - course: Master MVA (Mathematics Applied to AI)
       institution: Ecole normale supérieure Paris Saclay
       year: 2021
-    - course: Master in Theoretical Physics
-      institution: Ecole normale supérieure
+    - course: Master ICFP in Theoretical Physics
+      institution: Ecole normale supérieure | PSL
       year: 2020
 superuser: true
 status:
