@@ -53,6 +53,6 @@ title: Hugo Ninou
 first_name: Alice
 email: ""
 ---
-Bisou à Emma <3
+PhD student in statistical physics applied to neuroscience at ENS Paris. Control of maturating biological neural networks
 
 {style="text-align: justify;"}
