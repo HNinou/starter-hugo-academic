@@ -8,60 +8,64 @@ image:
   focal_point: Smart
   preview_only: false
 ---
-
-
 > 1 Introduction
->
-> Ce projet s'inscrit dans le cours Information et Complexit´e, et
-> ambitionne de r´epondre au d´efi 'Can you predict the tide?'. Le d´efi
-> propos´e par l'´equipe FLUMINANCE de l'Inria consiste a\` pr´edire le
-> surplus de mar´ee \`a partir de mesures et champs de pression pass´es.
-> L'application tr\`es directe de ce d´efi est de pouvoir r´epondre de
-> mani\`ere plus eficace aux ´ev´enements de mar´ees extr\`emes. Dans ce
-> rapport, nous d´etaillons notre d´emarche qui se fait en deux temps.
-> Nous rapportons premi\`erement les ´el´ements essentiels de l'analyse
-> du jeu de donn´ees que nous avons a\` notre disposition. Cette analyse
-> nous permet dans un second temps de proposer une impl´ementation
-> pertinente d'un mod\`ele 'Encoder-Decoder' pour r´epondre au d´efi.
->
-> 2 Analyse des donn´ees
->
-> 2.1 Cartes de chaleur
->
-> Afin de proposer les algorithmes les plus pertinents pour r´esoudre le
-> probl\`eme propos´e, nous avons commenc´e par ´etudier le jeu de
-> donn´ees. Une premi\`ere approche consiste a\` faire une r´egression
-> lin´eaire du surplus de mar´ee \`a un temps donn´e \`a partir de
-> chaque point du champ de pression au mˆeme moment. Pr´ealablement, les
-> valeurs du champ de pression ont ´et´e centr´ees et r´eduites. La
-> corr´elation entre le surplus de mar´ee et le champ de pression en un
-> point nous donne alors la carte de chaleur de la figure 1. A noter que
-> l'on compte 5 fois plus de champs de pression que de points de surplus
-> de mar´ee. La r´egression lin´eaire est donc faite en prenant le champ
-> de pression le plus proche dans le temps du surplus de mar´ee. les
-> zones bleues correspondent aux points pour lesquels une d´epression
-> induit un surplus de mar´ee positif et inversement pour les zones
-> rouges. Avec cette analyse tr\`es simple, nous pouvons d´eja` dire
-> que la ville 1 semble se trouver dans le cadran Sud-Est de la carte
-> tandis que la ville 2 semble se trouver dans le cadran Nord-Ouest.
->
-> Nous pouvons proc´eder de la mˆeme mani`ere avec cette fois les
-> d´eriv´ees spa-tiales du champ de pression que nous appelons dans la
-> suite vent horizontal (d´eriv´ee selon l'axe des abscisse) et vent
-> vertical (d´eriv´ee selon l'axe des or-donn´ees). Les r´esultats sont
-> pr´esent´es dans les figures 2 et 3. On observe glob-alement que le
-> vent horizontal semble contenir plus d'information que le vent
-> vertical quant au surplus de mar´ee (les cartes de chaleur pour le
-> vent vertical contiennent beaucoup de coeficients proches de z´ero).
->
-> 2.2 Autocorr´elation du surplus de marée dans le temps
->
-> Nous venons de voir brièvement l'information que les champs de
-> pression pou-vaient prodiguer sur le surplus de mar´ee dans les villes
-> 1 et 2. Dans cette sous partie, nous nous attachons `a analyser
-> l'information que la s´erie temporelle
->
-> 2
+
+$$
+
+a=b
+
+$$
+
+Ce projet s'inscrit dans le cours Information et Complexit´e, et
+ambitionne de r´epondre au d´efi 'Can you predict the tide?'. Le d´efi
+propos´e par l'´equipe FLUMINANCE de l'Inria consiste a\` pr´edire le
+surplus de mar´ee \`a partir de mesures et champs de pression pass´es.
+L'application tr\`es directe de ce d´efi est de pouvoir r´epondre de
+mani\`ere plus eficace aux ´ev´enements de mar´ees extr\`emes. Dans ce
+rapport, nous d´etaillons notre d´emarche qui se fait en deux temps.
+Nous rapportons premi\`erement les ´el´ements essentiels de l'analyse
+du jeu de donn´ees que nous avons a\` notre disposition. Cette analyse
+nous permet dans un second temps de proposer une impl´ementation
+pertinente d'un mod\`ele 'Encoder-Decoder' pour r´epondre au d´efi.
+
+2 Analyse des donn´ees
+
+2.1 Cartes de chaleur
+
+Afin de proposer les algorithmes les plus pertinents pour r´esoudre le
+probl\`eme propos´e, nous avons commenc´e par ´etudier le jeu de
+donn´ees. Une premi\`ere approche consiste a\` faire une r´egression
+lin´eaire du surplus de mar´ee \`a un temps donn´e \`a partir de
+chaque point du champ de pression au mˆeme moment. Pr´ealablement, les
+valeurs du champ de pression ont ´et´e centr´ees et r´eduites. La
+corr´elation entre le surplus de mar´ee et le champ de pression en un
+point nous donne alors la carte de chaleur de la figure 1. A noter que
+l'on compte 5 fois plus de champs de pression que de points de surplus
+de mar´ee. La r´egression lin´eaire est donc faite en prenant le champ
+de pression le plus proche dans le temps du surplus de mar´ee. les
+zones bleues correspondent aux points pour lesquels une d´epression
+induit un surplus de mar´ee positif et inversement pour les zones
+rouges. Avec cette analyse tr\`es simple, nous pouvons d´eja` dire
+que la ville 1 semble se trouver dans le cadran Sud-Est de la carte
+tandis que la ville 2 semble se trouver dans le cadran Nord-Ouest.
+
+Nous pouvons proc´eder de la mˆeme mani`ere avec cette fois les
+d´eriv´ees spa-tiales du champ de pression que nous appelons dans la
+suite vent horizontal (d´eriv´ee selon l'axe des abscisse) et vent
+vertical (d´eriv´ee selon l'axe des or-donn´ees). Les r´esultats sont
+pr´esent´es dans les figures 2 et 3. On observe glob-alement que le
+vent horizontal semble contenir plus d'information que le vent
+vertical quant au surplus de mar´ee (les cartes de chaleur pour le
+vent vertical contiennent beaucoup de coeficients proches de z´ero).
+
+2.2 Autocorr´elation du surplus de marée dans le temps
+
+Nous venons de voir brièvement l'information que les champs de
+pression pou-vaient prodiguer sur le surplus de mar´ee dans les villes
+1 et 2. Dans cette sous partie, nous nous attachons `a analyser
+l'information que la s´erie temporelle
+
+2
 
 ![](a2lw2azj.png "Figure 1: Carte de chaleur de la corr´elation entre le champ de > pression centr´e r´eduit et le surplus de mar´ee pour la ville 1 > (gauche) et 2 (droite).")
 
