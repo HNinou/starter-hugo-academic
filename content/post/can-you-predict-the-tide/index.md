@@ -12,8 +12,6 @@ image:
 
 This project is part of the Information and Complexity course, and aims to answer the 'Can you predict the tide?' challenge from the FLUMINANCE team at Inria. The goal is to predict the excess of sea level using past pressure field measurements. In this report, we outline our approach which consists of two parts: 1) Analyzing the data set and 2) Implementing a relevant 'Encoder-Decoder' model for the prediction task
 
-
-
 {{< math >}}
 $$
 \gamma*{n} = \frac{ \left | \left (\mathbf x*{n} - \mathbf x*{n-1} \right )^T \left [\nabla F (\mathbf x*{n}) - \nabla F (\mathbf x*{n-1}) \right ] \right |}{\left |\nabla F(\mathbf{x}*{n}) - \nabla F(\mathbf{x}_{n-1}) \right |^2}
@@ -25,6 +23,8 @@ $$
 ### Heatmaps
 
 To choose the most appropriate algorithms to solve the problem, we first analyzed the dataset. We did a linear regression of the sea level at a given time based on each pressure field value at that time. We then centralized and reduced the pressure field values before performing the regression. The heatmap in Figure 1 shows the correlation between the pressure field and sea level for city 1 (left) and city 2 (right). We can already see that city 1 is located in the South-East quadrant of the heatmap, while city 2 is in the North-West.
+
+![](heatmap1_p.png)
 
 <img src="heatmap1_p.png" width = 0.49\textwidth"> <img src="heatmap2_p.png" width = 0.49\textwidth">
 
