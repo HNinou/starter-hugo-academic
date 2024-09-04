@@ -1,11 +1,9 @@
 ---
-title: Hugo Ninou
-role: PhD student in physics and computational neuroscience
 avatar_filename: avatar.jpg
 bio: ""
 interests:
-  - Statistical Physics
   - Computational neuroscience
+  - Statistical Physics
   - Artificial Intelligence
 social:
   - icon: twitter
@@ -49,7 +47,9 @@ superuser: true
 status:
   icon: ☕️
 last_name: Wu
+role: PhD student in physics and computational neuroscience
 highlight_name: true
+title: Hugo Ninou
 first_name: Alice
 email: ""
 ---
