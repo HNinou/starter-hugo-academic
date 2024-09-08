@@ -1,5 +1,5 @@
 ---
-title: Test
+title: Can you predict the tide ?
 date: 2024-09-08T06:17:45.720Z
 draft: false
 featured: false
@@ -8,8 +8,6 @@ image:
   focal_point: Smart
   preview_only: false
 ---
-# Can you predict the tide ?
-
 ## Table of Contents
 
 1. [Introduction](#introduction)  
