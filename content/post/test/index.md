@@ -65,7 +65,7 @@ Regarding recurrent cells, several choices can be made. The basic cell consists 
 The gradient descent is performed using the Adam method  with L2 regularization.
 
 #### Figure 5: Architecture of the implemented Encoder-Decoder model.
-![encoder_decoder.pdf](encoder_decoder.pdf)
+![encoder_decoder.png](encoder_decoder.png)
 
 ### Splitting the Data into Training Set and Testing Set
 
@@ -83,7 +83,7 @@ A first attempt was made by using the neural network as presented in Figure 5, b
 A second approach involved constructing a large vector comprising the tidal surplus in each city, along with the pressure and wind fields at the closest time (see Figure 7). The results obtained in this case are shown in Figure 8, using four layers, a hidden vector of size 200, and a dropout rate of 50%. This network achieved a minimum score of 0.57, which is a 5% improvement over the previous method but at the cost of a 25,000-fold increase in the number of parameters. A significant limitation of this implementation is the tendency for the model to overfit, despite L2 regularization, which forced us to use a very high dropout rate.
 
 #### Figure 7: Architecture with expanded input vectors including pressure and wind fields.
-![encoder_decoder_plus.pdf](encoder_decoder_plus.pdf)
+![encoder_decoder_plus.png](encoder_decoder_plus.png)
 
 #### Figure 8: Scores for the training set and test set over the epochs of learning when using all pressure and wind fields.
 ![losses_whole.png](losses_whole.png)
