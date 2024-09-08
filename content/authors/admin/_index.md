@@ -47,7 +47,7 @@ superuser: true
 status:
   icon: ☕️
 last_name: Wu
-role: PhD student in physics and computational neuroscience
+role: PhD student in theoretical and computational neuroscience
 highlight_name: true
 title: Hugo Ninou
 first_name: Alice
