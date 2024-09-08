@@ -28,7 +28,7 @@ image:
 
 ## Introduction
 
-Cortical networks, which consist in highly interconnected neurons with recurrent synapses are believed to make for the fundamental units of mammalian brains. Observations show that cortical connectivity lies somewhere between fully structured and fully random. Several functional approaches have been made for connectivity design of cortical networks since the 80's but they lack a unifying conceptual picture. To address this matter, authors point out that all these approaches share something in common: the fact that the resulting connectivity matrices are low rank. This article \cite{mastrogiuseppe_linking_2018} aims at linking the recurrent neural networks' dynamics to their connectivity matrix and showing how one can design the low-rank connectivity structure of such networks to implement specific computations. The latter point is illustrated on four specific tasks.
+Cortical networks, which consist in highly interconnected neurons with recurrent synapses are believed to make for the fundamental units of mammalian brains. Observations show that cortical connectivity lies somewhere between fully structured and fully random. Several functional approaches have been made for connectivity design of cortical networks since the 80's but they lack a unifying conceptual picture. To address this matter, authors point out that all these approaches share something in common: the fact that the resulting connectivity matrices are low rank. This article [1] aims at linking the recurrent neural networks' dynamics to their connectivity matrix and showing how one can design the low-rank connectivity structure of such networks to implement specific computations. The latter point is illustrated on four specific tasks.
 
 ## Theoretical Framework
 
@@ -40,7 +40,7 @@ $$ {{< /math >}}
 
 where {{< math >}}$J_{ij}${{< /math >}} is the connectivity matrix representing the synaptic connections of the network and {{< math >}}$x_i${{< /math >}} is the external current input to neuron {{< math >}}$i${{< /math >}}. Note here that {{< math >}}$\phi(x_i)${{< /math >}} representing the firing rate can have negative values. This can be dealt with by replacing the {{< math >}}$\textrm{tanh}${{< /math >}} function, which makes the calculations easier, by a sigmoid without causing major changes to the theoretical results.
 
-As all the results of this article come from analysis and simulations of this model, it is crucial to understand its limitations as for the description of cortical neural networks. With this goal in mind, we explore some developments in order to understand the underlying hypotheses and limitations of this model by building it again from scratch \cite{dayan_theoretical_2001}.
+As all the results of this article come from analysis and simulations of this model, it is crucial to understand its limitations as for the description of cortical neural networks. With this goal in mind, we explore some developments in order to understand the underlying hypotheses and limitations of this model by building it again from scratch [2].
 
 ### Building a firing rate model
 
@@ -207,3 +207,10 @@ The same results were observed for our alternative model, and are presented in f
 ## Conclusion
 
 Thanks to a carefully conducted critical reading, we noticed that when building their firing rate model, authors implicitly did not explore an alternative model in which {{< math >}}$\tau_r${{< /math >}} (the membrane characteristic time) is not negligible with respect to {{< math >}}$\tau_s${{< /math >}} (the synaptic characteristic time). This alternative model is an interesting extension as it covers a theoretical framework ignored by the authors. We showed through a short theoretical analysis that both models were equivalent in the stationary case. Finally, we showed experimentally that the alternative model we proposed in equation (5) has very similar behavior to that of the paper's, both for spontaneous activity and in response to an external stimulus. Because this behavior analysis makes for the building block of the four task implementations, it is legitimate to think that the proposed alternative model will also be able to perform these tasks. The mini-project conducted here therefore shows that the low-rank recurrent neural networks studied in this paper are even more biologically plausible than they claim to be.
+
+- - -
+
+### References
+
+* Francesca Mastrogiuseppe and Srdjan Ostojic. Linking connectivity, dy-namics and computations in low-rank recurrent neural networks. Neuron, 99(3):609–623.e29, August 2018. arXiv: 1711.09672.
+* Peter Dayan and L. F. Abbott. Theoretical neuroscience: computational and mathematical modeling of neural systems. Computational neuro-science. Massachusetts Institute of Technology Press, Cambridge, Mass, 2001.
