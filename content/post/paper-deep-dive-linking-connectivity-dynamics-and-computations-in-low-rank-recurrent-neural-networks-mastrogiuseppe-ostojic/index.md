@@ -32,12 +32,11 @@ Cortical networks, which consist in highly interconnected neurons with recurrent
 
 ## Theoretical Framework
 
-The model used here to describe cortical neural networks is a firing rate model. This means that each node (i.e. neuron) in the network is represented by its firing rate {{< math >}}$\phi(x_i)${{< /math >}} with {{< math >}}$\phi(x)=\textrm{tanh}(x)${{< /math >}} being the current-to-rate transfer function, and {{< math >}}$i\in [1\dotsN]${{< /math >}}, with {{< math >}}$N${{< /math >}} the number of neurons. The evolution of a neuron's firing rate is governed by equation {{< math >}}\ref{fr_model}{{< /math >}}.
+The model used here to describe cortical neural networks is a firing rate model. This means that each node (i.e. neuron) in the network is represented by its firing rate {{< math >}}$\phi(x_i)${{< /math >}} with {{< math >}}$\phi(x)=\textrm{tanh}(x)${{< /math >}} being the current-to-rate transfer function, and {{< math >}}$i\in [1\dotsN]${{< /math >}}, with {{< math >}}$N${{< /math >}} the number of neurons. The evolution of a neuron's firing rate is governed by equation (1).
 
 {{< math >}}$$
     \dot{x_i}(t) = -x_i(t) + \sum_{j=1}^N J_{ij} \phi(x_j(t)) + I_i \quad (1)
 $$ {{< /math >}}
-\label{fr_model}
 
 where {{< math >}}$J_{ij}${{< /math >}} is the connectivity matrix representing the synaptic connections of the network and {{< math >}}$x_i${{< /math >}} is the external current input to neuron {{< math >}}$i${{< /math >}}. Note here that {{< math >}}$\phi(x_i)${{< /math >}} representing the firing rate can have negative values. This can be dealt with by replacing the {{< math >}}$\textrm{tanh}${{< /math >}} function, which makes the calculations easier, by a sigmoid without causing major changes to the theoretical results.
 
@@ -47,11 +46,10 @@ As all the results of this article come from analysis and simulations of this mo
 
 The behaviour of a neuron can be described by the neuronal response function {{< math >}}$y(t)${{< /math >}} that encodes the exact time at which it fires spikes. A model involving {{< math >}}$y(t)${{< /math >}} is called a spiking model. 
 {{< math >}}$$
-        y(t) = \sum_{i=1}^n \delta(t-t_i),    \quad  r(t) = \int_t^{t+\Delta t}  \underbrace{\frac{1}{\Delta t}\langle y(\tau) \rangle  d\tau}_{\textrm{average over the trials}}
+        y(t) = \sum_{i=1}^n \delta(t-t_i),    \quad  r(t) = \int_t^{t+\Delta t}  \underbrace{\frac{1}{\Delta t}\langle y(\tau) \rangle  d\tau}_{\textrm{average over the trials}} \quad (2)
 $$ {{< /math >}}
-\label{firing rate eq}
 
-Firing rate models focus on the quantity {{< math >}}$r(t)${{< /math >}} in eq. {{< math >}}\ref{firing rate eq}{{< /math >}} which is an approximation of the exact spike sequence {{< math >}}$y(t)${{< /math >}}. They have the advantage of being easier to simulate on computers as they do not take into account the short time scale dynamics of the spikes. As we want to model the total input for the neurons, we can look at {{< math >}}$r(t)${{< /math >}} instead of {{< math >}}$y(t)${{< /math >}} if there is not too much variability between two trials. Indeed, upon summing over different synapses, one has low variability (Central Limit Theorem) if the entries are numerous and uncorrelated.
+Firing rate models focus on the quantity {{< math >}}$r(t)${{< /math >}} in eq. (2) which is an approximation of the exact spike sequence {{< math >}}$y(t)${{< /math >}}. They have the advantage of being easier to simulate on computers as they do not take into account the short time scale dynamics of the spikes. As we want to model the total input for the neurons, we can look at {{< math >}}$r(t)${{< /math >}} instead of {{< math >}}$y(t)${{< /math >}} if there is not too much variability between two trials. Indeed, upon summing over different synapses, one has low variability (Central Limit Theorem) if the entries are numerous and uncorrelated.
 
 Firing rate models are relevant when
 
@@ -70,7 +68,7 @@ Let's first describe the firing rate {{< math >}}$r(t)${{< /math >}} as a functi
 {{< math >}}$$
     \tau_r \frac{dr}{dt} = -r + \phi(x(t))
 $$ {{< /math >}}
-\label{v(I)}
+
 
 Note that in reality, it is the membrane potential, not the firing rate, that is a low pass of the input current and that the dynamics of the two are not the same. 
 
@@ -85,30 +83,27 @@ $$ {{< /math >}}
 which in the firing rate model approximation writes
 
 {{< math >}}$$
-    x_i(t) = \sum_{j=1}^{N} J_{ij} \int_{-\infty}^{t} d\tau K(t-\tau) r_j(\tau)
+    x_i(t) = \sum_{j=1}^{N} J_{ij} \int_{-\infty}^{t} d\tau K(t-\tau) r_j(\tau) \quad (3)
 $$ {{< /math >}}
-\label{I(t)withK}
 
-By taking {{< math >}}$K(t) = \exp(-t/\tau_s)/\tau_s${{< /math >}} (with {{< math >}}$\tau_s${{< /math >}} the time constant that describes the decay of the synaptic conductance, usually of the order of a few milliseconds), then {{< math >}}\eqref{I(t)withK}{{< /math >}} can be written as a differential equation
+By taking {{< math >}}$K(t) = \exp(-t/\tau_s)/\tau_s${{< /math >}} (with {{< math >}}$\tau_s${{< /math >}} the time constant that describes the decay of the synaptic conductance, usually of the order of a few milliseconds), then (3) can be written as a differential equation
 
 {{< math >}}$$
-    \tau_s \frac{dx_i(t)}{dt} = -x_i(t) + \Big( \sum_{j=1}^{N} J_{ij} r_j(t) + I_i\Big)
+    \tau_s \frac{dx_i(t)}{dt} = -x_i(t) + \Big( \sum_{j=1}^{N} J_{ij} r_j(t) + I_i\Big) \quad (4)
 $$ {{< /math >}}
-\label{I(u)}
 
-This is actually equation {{< math >}}\ref{fr_model}{{< /math >}} of the paper in which {{< math >}}$\tau_s${{< /math >}} was chosen equal to 1 for simplicity. Equations {{< math >}}\eqref{I(u)}{{< /math >}} and {{< math >}}\eqref{firing rate eq}{{< /math >}} give us the two parts needed to describe a firing rate model which can be simplified in two extreme cases:
+This is actually equation (1) of the paper in which {{< math >}}$\tau_s${{< /math >}} was chosen equal to 1 for simplicity. Equations (4) and (2) give us the two parts needed to describe a firing rate model which can be simplified in two extreme cases:
 
 - {{< math >}}$\tau_r \gg \tau_s${{< /math >}}: Then {{< math >}}$x_i(t) = \sum_{j=1}^{N} J_{ij} r_j(t) + I_i${{< /math >}} and {{< math >}}$r${{< /math >}} is a low-pass of {{< math >}}$x(t)${{< /math >}}.
 - {{< math >}}$\tau_r \ll \tau_s${{< /math >}}: Then {{< math >}}$r(t) = \phi(x(t))${{< /math >}}, {{< math >}}$r(t)${{< /math >}} follows {{< math >}}$x(t)${{< /math >}} instantaneously.
 
-Authors implicitly consider that we're in the situation where {{< math >}}$\tau_r \ll \tau_s${{< /math >}} which is not obvious at all as both characteristic times seem to be of the same order of magnitude. This observation led me to explore what would have been the paper's results if they had instead considered the situation where {{< math >}}$\tau_r \gg \tau_s${{< /math >}}. This latter case yields the following equation for the system that has to be compared to equation {{< math >}}\ref{fr_model}{{< /math >}}:
+Authors implicitly consider that we're in the situation where {{< math >}}$\tau_r \ll \tau_s${{< /math >}} which is not obvious at all as both characteristic times seem to be of the same order of magnitude. This observation led me to explore what would have been the paper's results if they had instead considered the situation where {{< math >}}$\tau_r \gg \tau_s${{< /math >}}. This latter case yields the following equation for the system that has to be compared to equation (1):
 
 {{< math >}}$$
-    \dot{r_i} = -r_i + \phi(\sum_{j=1}^N J_{ij}r_j+I_i)
+    \dot{r_i} = -r_i + \phi(\sum_{j=1}^N J_{ij}r_j+I_i) \quad (5)
 $$ {{< /math >}}
-\label{eq:fr_model_alt}
 
-In the following, we will reproduce some of both theoretical and simulatory results of the paper and try to extend them to a system governed by equation {{< math >}}\ref{eq:fr_model_alt}{{< /math >}}.
+In the following, we will reproduce some of both theoretical and simulatory results of the paper and try to extend them to a system governed by equation (5).
 
 ### Networks with low-rank connectivity matrices
 
@@ -119,7 +114,7 @@ The connectivity matrix {{< math >}}$J_{ij}${{< /math >}} is the sum of an uncon
 {{< math >}}$$
     J_{ij} = \underbrace{g \chi_{ij}}_{\textrm{mean $0$, variance $g^2/N$}} + \underbrace{P_{ij}}_{\textrm{of order $1/N$}}
 $$ {{< /math >}}
-\label{eqJ(chi,p)}
+
 
 Note that there is no biological reason for which {{< math >}}$\chi_{ij}${{< /math >}} should have a variance scaling as {{< math >}}$1/N${{< /math >}}. This constraint makes possible the comparison of networks of different sizes from a theoretical perspective (especially in the case {{< math >}}$N \to \infty${{< /math >}}) and can be dealt with by adjusting the random strength {{< math >}}$g${{< /math >}} at will.
 
@@ -133,19 +128,19 @@ Under the assumption of a large network with a weak low-dimensional connectivity
 
 #### Dynamical Mean-Field Theory extension to the {{< math >}}$\tau_r \gg \tau_s${{< /math >}} case
 
-Starting from equation {{< math >}}\ref{eq:fr_model_alt}{{< /math >}}, we derive a Dynamical Mean-Field approach in order to express both {{< math >}}$\mu_i \equiv [x_i]${{< /math >}} and {{< math >}}$\Delta_0^I \equiv [x_i^2] - [x_i]^2${{< /math >}}. Similarly to the derivation proposed in the supplementary information of the paper, one can consider the case where {{< math >}}$I_i=0${{< /math >}} {{< math >}}\forall i{{< /math >}}. By denoting
+Starting from equation (5), we derive a Dynamical Mean-Field approach in order to express both {{< math >}}$\mu_i \equiv [x_i]${{< /math >}} and {{< math >}}$\Delta_0^I \equiv [x_i^2] - [x_i]^2${{< /math >}}. Similarly to the derivation proposed in the supplementary information of the paper, one can consider the case where {{< math >}}$I_i=0${{< /math >}} {{< math >}}\forall i{{< /math >}}. By denoting
 
 {{< math >}}$$
     \eta_i(t) = \sum_{j=1}^N J_{ij} r_j = g \sum_{j=1}^N \chi_{ij} r_j + \frac{m_i}{N} \sum_{j=1}^N n_j r_j
 $$ {{< /math >}}
-\label{eq:def_eta}
 
-equation {{< math >}}\ref{eq:fr_model_alt}{{< /math >}} can be rewritten as
+
+equation (5) can be rewritten as
 
 {{< math >}}$$
     \dot{r_i} = -r_i + \phi(\eta_i)
 $$ {{< /math >}}
-\label{eq:modified_langevin}
+
 
 In the stationary scenario, we would then have
 
@@ -183,7 +178,7 @@ The biologically plausible phase is the one where there is both structured and c
 
 ### Comparison with the phase diagram in the {{< math >}}$\tau_r \gg \tau_s${{< /math >}} case
 
-We investigate the changes that using equation {{< math >}}\ref{eq:fr_model_alt}{{< /math >}} instead of {{< math >}}\ref{fr_model}{{< /math >}} would bring to the phase diagram describing the system's behavior. Interestingly, the phase diagram obtained for equation {{< math >}}\ref{eq:fr_model_alt}{{< /math >}} is very similar to that of {{< math >}}\ref{fr_model}{{< /math >}} (see figure {{< math >}}\ref{fig:phasediag_compare}{{< /math >}}). This was expected for the stationary part of the diagram but not necessarily for the chaotic part. This result hints us into thinking that the DMF theoretical results one would derive for our alternative model might be the same as the ones found in the paper.
+We investigate the changes that using equation (5) instead of (1) would bring to the phase diagram describing the system's behavior. Interestingly, the phase diagram obtained for equation (5) is very similar to that of (1) (see figure {{< math >}}\ref{fig:phasediag_compare}{{< /math >}}). This was expected for the stationary part of the diagram but not necessarily for the chaotic part. This result hints us into thinking that the DMF theoretical results one would derive for our alternative model might be the same as the ones found in the paper.
 
 ![Phase diagram](phase_diag_compare.png)
 *Left: Phase diagram for {{< math >}}$\tau_r \ll \tau_s${{< /math >}}. Right: Phase diagram for {{< math >}}$\tau_r \gg \tau_s${{< /math >}} (resolution 50 × 50).*
@@ -211,4 +206,4 @@ The same results were observed for our alternative model, and are presented in f
 
 ## Conclusion
 
-Thanks to a carefully conducted critical reading, we noticed that when building their firing rate model, authors implicitly did not explore an alternative model in which {{< math >}}$\tau_r${{< /math >}} (the membrane characteristic time) is not negligible with respect to {{< math >}}$\tau_s${{< /math >}} (the synaptic characteristic time). This alternative model is an interesting extension as it covers a theoretical framework ignored by the authors. We showed through a short theoretical analysis that both models were equivalent in the stationary case. Finally, we showed experimentally that the alternative model we proposed in equation {{< math >}}\ref{eq:fr_model_alt}{{< /math >}} has very similar behavior to that of the paper's, both for spontaneous activity and in response to an external stimulus. Because this behavior analysis makes for the building block of the four task implementations, it is legitimate to think that the proposed alternative model will also be able to perform these tasks. The mini-project conducted here therefore shows that the low-rank recurrent neural networks studied in this paper are even more biologically plausible than they claim to be.
+Thanks to a carefully conducted critical reading, we noticed that when building their firing rate model, authors implicitly did not explore an alternative model in which {{< math >}}$\tau_r${{< /math >}} (the membrane characteristic time) is not negligible with respect to {{< math >}}$\tau_s${{< /math >}} (the synaptic characteristic time). This alternative model is an interesting extension as it covers a theoretical framework ignored by the authors. We showed through a short theoretical analysis that both models were equivalent in the stationary case. Finally, we showed experimentally that the alternative model we proposed in equation (5) has very similar behavior to that of the paper's, both for spontaneous activity and in response to an external stimulus. Because this behavior analysis makes for the building block of the four task implementations, it is legitimate to think that the proposed alternative model will also be able to perform these tasks. The mini-project conducted here therefore shows that the low-rank recurrent neural networks studied in this paper are even more biologically plausible than they claim to be.
