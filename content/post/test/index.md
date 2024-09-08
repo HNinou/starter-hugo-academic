@@ -10,10 +10,6 @@ image:
 ---
 # Can you predict the tide ?
 
-**Course: Information and Complexity**  
-_Hugo Ninou_  
-April 2022
-
 ## Table of Contents
 
 1. [Introduction](#introduction)  
