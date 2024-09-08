@@ -14,7 +14,7 @@ social:
       header: true
   - icon: graduation-cap
     icon_pack: fas
-    link: https://scholar.google.co.uk/
+    link: https://scholar.google.com/citations?user=0kHfZVAAAAAJ&hl
   - icon: github
     icon_pack: fab
     link: https://github.com/HNinou
