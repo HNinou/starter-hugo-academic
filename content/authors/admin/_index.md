@@ -4,7 +4,7 @@ bio: ""
 interests:
   - Computational neuroscience
   - Statistical Physics
-  - Artificial Intelligence
+  - Machine learning
 social:
   - icon: twitter
     icon_pack: fab
