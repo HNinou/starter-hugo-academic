@@ -217,5 +217,5 @@ Thanks to a carefully conducted critical reading, we noticed that when building 
 
 ### References
 
-* Francesca Mastrogiuseppe and Srdjan Ostojic. Linking connectivity, dy-namics and computations in low-rank recurrent neural networks. Neuron, 99(3):609–623.e29, August 2018. arXiv: 1711.09672.
-* Peter Dayan and L. F. Abbott. Theoretical neuroscience: computational and mathematical modeling of neural systems. Computational neuro-science. Massachusetts Institute of Technology Press, Cambridge, Mass, 2001.
+* [1] Francesca Mastrogiuseppe and Srdjan Ostojic. Linking connectivity, dy-namics and computations in low-rank recurrent neural networks. Neuron, 99(3):609–623.e29, August 2018. arXiv: 1711.09672.
+* [2] Peter Dayan and L. F. Abbott. Theoretical neuroscience: computational and mathematical modeling of neural systems. Computational neuro-science. Massachusetts Institute of Technology Press, Cambridge, Mass, 2001.
