@@ -35,7 +35,7 @@ Cortical networks, which consist in highly interconnected neurons with recurrent
 The model used here to describe cortical neural networks is a firing rate model. This means that each node (i.e. neuron) in the network is represented by its firing rate {{< math >}}$\phi(x_i)${{< /math >}} with {{< math >}}$\phi(x)=\textrm{tanh}(x)${{< /math >}} being the current-to-rate transfer function, and {{< math >}}$i\in [1\dotsN]${{< /math >}}, with {{< math >}}$N${{< /math >}} the number of neurons. The evolution of a neuron's firing rate is governed by equation {{< math >}}\ref{fr_model}{{< /math >}}.
 
 {{< math >}}$$
-    \dot{x_i}(t) = -x_i(t) + \sum_{j=1}^N J_{ij} \phi(x_j(t)) + I_i [1]
+    \dot{x_i}(t) = -x_i(t) + \sum_{j=1}^N J_{ij} \phi(x_j(t)) + I_i (1)
 $$ {{< /math >}}
 \label{fr_model}
 
