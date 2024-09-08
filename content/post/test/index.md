@@ -24,13 +24,13 @@ image:
 
 ## Introduction
 
-This project is part of the course Information and Complexity and aims to address the challenge 'Can you predict the tide?'. The challenge, proposed by the FLUMINANCE team at Inria, consists of predicting the tidal surplus based on past measurements and pressure fields. A direct application of this challenge is to provide more efficient responses to extreme tidal events. In this report, we detail our approach, which is carried out in two stages: we first present key elements of the data analysis, and then propose a relevant implementation of an _Encoder-Decoder_ model to meet the challenge.
+This project is part of the course Information and Complexity and aims to address the challenge 'Can you predict the tide?'. The challenge, proposed by the FLUMINANCE team at Inria, consists of predicting the tidal surplus based on past measurements and pressure fields. A direct application of this challenge is to provide more efficient responses to extreme tidal events. In this report, we detail our approach, which is carried out in two stages: we first present key elements of the data analysis, and then propose a relevant implementation of an _Encoder-Decoder_ model to meet this challenge.
 
 ## Data Analysis
 
 ### Heat Maps
 
-To propose the most relevant algorithms to solve the given problem, we started by studying the dataset. A first approach consists of performing a linear regression of the tidal surplus at a given time based on each point of the pressure field at the same time. Prior to this, the values of the pressure field were centered and reduced. The correlation between the tidal surplus and the pressure field at a point provides us with the heatmap in Figure 1. Note that there are 5 times more pressure fields than points of tidal surplus. Therefore, linear regression is done by taking the pressure field closest in time to the tidal surplus. Blue areas correspond to points where a depression induces a positive tidal surplus, and conversely, red areas show the opposite. From this simple analysis, we can already suggest that City 1 is likely located in the Southeast quadrant of the map, while City 2 is likely in the Northwest quadrant.  
+To propose the most relevant algorithms to solve the given problem, we started by studying the dataset. A first approach consists of performing a linear regression of the tidal surplus at a given time based on each point of the pressure field at the same time. Prior to this, the values of the pressure field were z-scored. The correlation between the tidal surplus and the pressure field at a point provides us with the heatmap in Figure 1. Note that there are 5 times more pressure fields than time points of tidal surplus. Therefore, linear regression is done by taking the pressure field closest in time to the tidal surplus. Blue areas correspond to points where a depression induces a positive tidal surplus, and conversely, red areas show the opposite. From this simple analysis, we can already suggest that City 1 is likely located in the Southeast quadrant of the map, while City 2 is likely in the Northwest quadrant.  
 
 We can proceed similarly using the spatial derivatives of the pressure field, which we refer to as horizontal wind (derivative along the x-axis) and vertical wind (derivative along the y-axis). The results are shown in Figures 2 and 3. Overall, the horizontal wind appears to carry more information about the tidal surplus (the heat maps for the vertical wind contain many coefficients close to zero).
 
@@ -45,14 +45,14 @@ We can proceed similarly using the spatial derivatives of the pressure field, wh
 
 ### Autocorrelation of the Tidal Surplus Over Time
 
-We have briefly discussed the information that the pressure fields provide regarding the tidal surplus in Cities 1 and 2. In this section, we analyze the information that the time series of the tidal surplus carries about itself. One way to do this is by looking at the autocorrelation of the tidal surplus over time for Cities 1 and 2. After reordering the tidal surplus data in chronological order, we plotted the autocorrelation curves shown in Figure 4. One limitation of this approach is that the time intervals between consecutive points are irregular. On average, the interval is 9 hours, but about two-thirds of the points are evaluated at the same time as the previous point, likely due to an expansion of the dataset. Nonetheless, it is still possible to observe that the tidal surplus is quite autocorrelated over time, with a more marked correlation for City 2 than for City 1. Therefore, it will likely be much easier to infer accurate results for City 2 than for City 1, which is indeed what we observe when separating the scores for each city.
+We have briefly discussed the information that the pressure fields provide regarding the tidal surplus in Cities 1 and 2. In this section, we analyze the information that the time series of the tidal surplus carries about itself. One way to do this is by looking at the autocorrelation of the tidal surplus over time for Cities 1 and 2. After reordering the tidal surplus data in chronological order, we plotted the autocorrelation curves shown in Figure 4. One limitation of this approach is that the time intervals between consecutive points are irregular. On average, the interval is 9 hours, but about two-thirds of the points are evaluated at the same time as the previous point, likely due to an expansion of the dataset. Nonetheless, it is still possible to observe that the tidal surplus is quite autocorrelated over time, with a more marked correlation for City 2 than for City 1. Therefore, it will likely be much easier to infer accurate results for City 2 than for City 1, which is indeed what we observe when separating the prediction scores for each city.
 
 #### Figure 4: Autocorrelation of the tidal surplus for City 1 (left) and City 2 (right).
 ![autocorr1.png](autocorr1.png)
 
 ## Development of a Recurrent Neural Network (RNN)
 
-The development of artificial neural networks for solving prediction problems in meteorology and climatology is relatively recent. Here, we draw inspiration from two articles that use an _Encoder-Decoder_ architecture   , which have demonstrated state-of-the-art performance for time series prediction.
+The development of artificial neural networks for solving prediction problems in meteorology and climatology is relatively recent. Here, we draw inspiration from two articles that use an _Encoder-Decoder_ architecture [1][2][3], which have demonstrated state-of-the-art performance for time series prediction.
 
 ### The Encoder-Decoder Model
 
@@ -93,9 +93,12 @@ Finally, we propose a less naive implementation of the neural network that lever
 #### Figure 9: Scores for the training set and test set over the epochs of learning with dimensionality reduction of pressure and wind fields.
 ![losses_with_slp_and_wind.png](losses_with_slp_and_wind.png)
 
+Note that we are only using one-fifth of the available pressure fields. An extension to consider would be to not only use the pressure field closest in time to the tidal surplus measurement but also include the 4 previous fields, which could provide additional information. In this case, it would be necessary to compute heatmaps showing the correlation between the tidal surplus at time \(t\) and these fields at times \(t-1\), \(t-2\), \(t-3\), and \(t-4\).
+
+
 ## Conclusion
 
-Based on a thorough data analysis, we proposed an _Encoder-Decoder_ model to tackle the challenge. In the context of the _Encoder-Decoder_ model, the issue of compressing the information contained in the pressure field is central. Feeding the network with raw pressure fields leads to overfitting problems, which are difficult to resolve. The method we propose, which reduces entire fields to a single scalar, may be extreme but offers good explainability and yields very good results. The optimal approach likely lies somewhere between these two extremes, avoiding translation-invariant compression methods, as the location of depressions and winds is crucial for solving the problem.
+Based on a thorough data analysis, we proposed an _Encoder-Decoder_ model to tackle this challenge. In the context of the _Encoder-Decoder_ model, the issue of compressing the information contained in the pressure field is central. Feeding the network with raw pressure fields leads to overfitting problems, which are difficult to resolve. The method we propose, which reduces entire fields to a single scalar, may be extreme but offers good explainability and yields very good results. The optimal approach likely lies somewhere between these two extremes, avoiding translation-invariant compression methods, as the location of depressions and winds is crucial for solving the problem.
 
 ---
 
