@@ -56,8 +56,9 @@ Firing rate models are relevant when
 1. The firing of neurons in a network is uncorrelated (there is little synchronous firing)
 2. The precise patterns of spike timing are unimportant. Indeed, the information regarding those precise patterns is lost when averaging over the trials.
 
+#### Figure 1: Sketch of a modeled neuron with presynaptic inputs {{< math >}}$r_i${{< /math >}} and postsynaptic output {{< math >}}$r(t)${{< /math >}}. {{< math >}}$x(t)${{< /math >}} is the total synaptic current or input.
 ![Neuron drawing](Neuron_drawing.png)
-*Sketch of a modeled neuron with presynaptic inputs {{< math >}}$r_i${{< /math >}} and postsynaptic output {{< math >}}$r(t)${{< /math >}}. {{< math >}}$x(t)${{< /math >}} is the total synaptic current or input.*
+
 
 In order to fully describe a firing rate model, we have to specify the dependence of the postsynaptic firing rate on the total synaptic input {{< math >}}$r(x)${{< /math >}} and the dependence of the total synaptic input on the presynaptic inputs {{< math >}}$x(r_1,r_2,r_3,r_4)${{< /math >}}.
 
@@ -164,13 +165,14 @@ Conducting a DMF analysis in the chaotic scenario is however trickier, and we do
 
 ### Reproduction of the paper's phase diagram
 
+#### Figure 2: Phase diagram obtained from personal simulations (50×50 resolution). Left: measures the chaotic nature of the system. Right: measures the structured nature of the system.
 ![Phase diagram obtained from personal simulations](phase_diag_stat_chao_randomness_fixed.png)
-*Phase diagram obtained from personal simulations (50×50 resolution). Left: measures the chaotic nature of the system. Right: measures the structured nature of the system.*
 
+#### Figure 3: Left: Theoretical phase diagram from the article. Right: Phase diagram obtained from personal simulations (50×50 resolution).
 ![Phase diagram](phase_diag_art.PNG)
-*Left: Theoretical phase diagram from the article. Right: Phase diagram obtained from personal simulations (50×50 resolution).*
 
-In figure 1 of the article, a phase diagram is proposed. The result presented shows the phase diagram obtained from theoretical results. We chose to reproduce this phase diagram thanks to simulations (fig.{{< math >}}\ref{phasediag}{{< /math >}}). To do so, finding the good statistics to describe the chaoticity and structuration of the system is crucial. Authors hint us in using the temporal variance of {{< math >}}$x_i${{< /math >}}, averaged over the number of neurons, to characterize chaoticity {{< math >}}$\langle \textrm{std}_t(x_i) \rangle_i${{< /math >}}. We use the activity along {{< math >}}$m${{< /math >}}, given by {{< math >}}$\kappa = \langle n_i[\phi_i] \rangle_i${{< /math >}} to characterize structure. We superimposed the phase diagrams for chaoticity and structure shown in figure {{< math >}}\ref{fig:phasediag_separated}{{< /math >}} to obtain the one shown on the right panel of figure {{< math >}}\ref{phasediag}{{< /math >}}.
+
+In figure 1 of the article, a phase diagram is proposed. The result presented shows the phase diagram obtained from theoretical results. We chose to reproduce this phase diagram thanks to simulations (fig.3). To do so, finding the good statistics to describe the chaoticity and structuration of the system is crucial. Authors hint us in using the temporal variance of {{< math >}}$x_i${{< /math >}}, averaged over the number of neurons, to characterize chaoticity {{< math >}}$\langle \textrm{std}_t(x_i) \rangle_i${{< /math >}}. We use the activity along {{< math >}}$m${{< /math >}}, given by {{< math >}}$\kappa = \langle n_i[\phi_i] \rangle_i${{< /math >}} to characterize structure. We superimposed the phase diagrams for chaoticity and structure shown in figure 2 to obtain the one shown on the right panel of figure 3.
 
 Each of the 2500 pixels on the simulated phase diagram represents a simulation. The statistics were measured after a transient phase was over for 100 seconds with parameter {{< math >}}$\Delta t = 0.5 \textrm{s}${{< /math >}}. Considering the ergodicity theorem, this allows us not to have to make several simulations for each pair of parameters, which would have multiplied by the same amount the time spent in simulating the transient phase.
 
@@ -178,31 +180,34 @@ The biologically plausible phase is the one where there is both structured and c
 
 ### Comparison with the phase diagram in the {{< math >}}$\tau_r \gg \tau_s${{< /math >}} case
 
-We investigate the changes that using equation (5) instead of (1) would bring to the phase diagram describing the system's behavior. Interestingly, the phase diagram obtained for equation (5) is very similar to that of (1) (see figure {{< math >}}\ref{fig:phasediag_compare}{{< /math >}}). This was expected for the stationary part of the diagram but not necessarily for the chaotic part. This result hints us into thinking that the DMF theoretical results one would derive for our alternative model might be the same as the ones found in the paper.
+We investigate the changes that using equation (5) instead of (1) would bring to the phase diagram describing the system's behavior. Interestingly, the phase diagram obtained for equation (5) is very similar to that of (1) (see figure 4). This was expected for the stationary part of the diagram but not necessarily for the chaotic part. This result hints us into thinking that the DMF theoretical results one would derive for our alternative model might be the same as the ones found in the paper.
 
+#### Figure 4: Left: Phase diagram for {{< math >}}$\tau_r \ll \tau_s${{< /math >}}. Right: Phase diagram for {{< math >}}$\tau_r \gg \tau_s${{< /math >}} (resolution 50 × 50).
 ![Phase diagram](phase_diag_compare.png)
-*Left: Phase diagram for {{< math >}}$\tau_r \ll \tau_s${{< /math >}}. Right: Phase diagram for {{< math >}}$\tau_r \gg \tau_s${{< /math >}} (resolution 50 × 50).*
+
 
 ## Response to an external input
 
-For further analysis, we aim at comparing the behavior of our alternative model to that of the paper in response to an external stimulus {{< math >}}$I${{< /math >}}. As in the article, we look at the response of the system along the {{< math >}}$m${{< /math >}} vector. Figure {{< math >}}\ref{fig:transient_dyn}{{< /math >}} shows the transient dynamics for both models when the system is subject to an external input with the same connectivity matrix and the same initial conditions. One can see that, as expected by the theory, the stationary states are the same while the transient phases slightly differ. Indeed, the system seems to evolve more slowly for the alternative model (figure {{< math >}}\ref{fig:transient_dyn}{{< /math >}} right).
+For further analysis, we aim at comparing the behavior of our alternative model to that of the paper in response to an external stimulus {{< math >}}$I${{< /math >}}. As in the article, we look at the response of the system along the {{< math >}}$m${{< /math >}} vector. Figure 5 shows the transient dynamics for both models when the system is subject to an external input with the same connectivity matrix and the same initial conditions. One can see that, as expected by the theory, the stationary states are the same while the transient phases slightly differ. Indeed, the system seems to evolve more slowly for the alternative model (figure 5 right).
+
+#### Figure 5: Transient dynamics in the {{< math >}}$\tau_r \ll \tau_s${{< /math >}} (Left) and {{< math >}}$\tau_r \gg \tau_s${{< /math >}} (Right) scenarios in response to a step input.
+![Transient dynamics](transient_dyn.png)
 
 ### Reproduction of figure 2.D of the article
 
+Figure 6, corresponding to figure 2.D of the article, plays a major role in the four task implementations designed in the following of the paper. Reproducing this result for our alternative model basically ensures that it will be able to perform the proposed tasks as well. The reproduction of this result is presented in figure 7. The activity along vector {{< math >}}$m${{< /math >}} is recorded for 15 different intensities of the input in three case scenarios. First, in the case where {{< math >}}$m${{< /math >}}, {{< math >}}$n${{< /math >}}, and {{< math >}}$I${{< /math >}} are all orthogonal in respect to each other. The system hence shows no response along {{< math >}}$m${{< /math >}} as {{< math >}}$\kappa = \langle n_i[\phi_i] \rangle_i = 0${{< /math >}} (fig.7 left). Second, in the case where {{< math >}}$m${{< /math >}} and {{< math >}}$n${{< /math >}} are orthogonal and {{< math >}}$I${{< /math >}} has a component along {{< math >}}$n${{< /math >}}. The network then shows some activity along {{< math >}}$m${{< /math >}} (fig.7 center). Finally, in the case where {{< math >}}$m${{< /math >}} and {{< math >}}$n${{< /math >}} have an overlap and {{< math >}}$I${{< /math >}} is colinear to the orthogonal part of {{< math >}}$n${{< /math >}} with respect to {{< math >}}$m${{< /math >}}, the system shows a bistable activity along {{< math >}}$m${{< /math >}} (fig.7 right). This bistable activity vanishes when the input becomes too strong.
+
+The same results were observed for our alternative model, and are presented in figure 8.
+
+#### Figure 6
 ![Figure 2D of the article](2D_art.PNG)
 
-Figure {{< math >}}\ref{fig:2D_art}{{< /math >}}, corresponding to figure 2.D of the article, plays a major role in the four task implementations designed in the following of the paper. Reproducing this result for our alternative model basically ensures that it will be able to perform the proposed tasks as well. The reproduction of this result is presented in figure {{< math >}}\ref{fig:2D_repro}{{< /math >}}. The activity along vector {{< math >}}$m${{< /math >}} is recorded for 15 different intensities of the input in three case scenarios. First, in the case where {{< math >}}$m${{< /math >}}, {{< math >}}$n${{< /math >}}, and {{< math >}}$I${{< /math >}} are all orthogonal in respect to each other. The system hence shows no response along {{< math >}}$m${{< /math >}} as {{< math >}}$\kappa = \langle n_i[\phi_i] \rangle_i = 0${{< /math >}} (fig.{{< math >}}\ref{fig:2D_repro}{{< /math >}} left). Second, in the case where {{< math >}}$m${{< /math >}} and {{< math >}}$n${{< /math >}} are orthogonal and {{< math >}}$I${{< /math >}} has a component along {{< math >}}$n${{< /math >}}. The network then shows some activity along {{< math >}}$m${{< /math >}} (fig.{{< math >}}\ref{fig:2D_repro}{{< /math >}} center). Finally, in the case where {{< math >}}$m${{< /math >}} and {{< math >}}$n${{< /math >}} have an overlap and {{< math >}}$I${{< /math >}} is colinear to the orthogonal part of {{< math >}}$n${{< /math >}} with respect to {{< math >}}$m${{< /math >}}, the system shows a bistable activity along {{< math >}}$m${{< /math >}} (fig.{{< math >}}\ref{fig:2D_repro}{{< /math >}} right). This bistable activity vanishes when the input becomes too strong.
-
-The same results were observed for our alternative model, and are presented in figure {{< math >}}\ref{fig:2D_alt}{{< /math >}}.
-
-![Transient dynamics](transient_dyn.png)
-*Transient dynamics in the {{< math >}}$\tau_r \ll \tau_s${{< /math >}} (Left) and {{< math >}}$\tau_r \gg \tau_s${{< /math >}} (Right) scenarios in response to a step input.*
-
+#### Figure 7: Activity along {{< math >}}$m${{< /math >}} as a function of input strength in three different scenarios in the {{< math >}}$\tau_r \ll \tau_s${{< /math >}} scenario. Left: {{< math >}}$m${{< /math >}}, {{< math >}}$n${{< /math >}}, and {{< math >}}$I${{< /math >}} are orthogonal. Center: {{< math >}}$m${{< /math >}} and {{< math >}}$n${{< /math >}} are orthogonal, and {{< math >}}$I${{< /math >}} has a component along {{< math >}}$n${{< /math >}}. Right: {{< math >}}$m${{< /math >}} and {{< math >}}$n${{< /math >}} have an overlap.
 ![Activity along m](2Dorth.png)
-*Activity along {{< math >}}$m${{< /math >}} as a function of input strength in three different scenarios in the {{< math >}}$\tau_r \ll \tau_s${{< /math >}} scenario. Left: {{< math >}}$m${{< /math >}}, {{< math >}}$n${{< /math >}}, and {{< math >}}$I${{< /math >}} are orthogonal. Center: {{< math >}}$m${{< /math >}} and {{< math >}}$n${{< /math >}} are orthogonal, and {{< math >}}$I${{< /math >}} has a component along {{< math >}}$n${{< /math >}}. Right: {{< math >}}$m${{< /math >}} and {{< math >}}$n${{< /math >}} have an overlap.*
 
+#### Figure 8: Same as figure {{< math >}}\ref{fig:2D_repro}{{< /math >}} but in the {{< math >}}$\tau_r \gg \tau_s${{< /math >}} scenario.
 ![Same as figure 2D but for the alternative model](2Dorth_alt.png)
-*Same as figure {{< math >}}\ref{fig:2D_repro}{{< /math >}} but in the {{< math >}}$\tau_r \gg \tau_s${{< /math >}} scenario.*
+
 
 ## Conclusion
 
