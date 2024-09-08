@@ -205,7 +205,7 @@ The same results were observed for our alternative model, and are presented in f
 #### Figure 7: Activity along {{< math >}}$m${{< /math >}} as a function of input strength in three different scenarios in the {{< math >}}$\tau_r \ll \tau_s${{< /math >}} scenario. Left: {{< math >}}$m${{< /math >}}, {{< math >}}$n${{< /math >}}, and {{< math >}}$I${{< /math >}} are orthogonal. Center: {{< math >}}$m${{< /math >}} and {{< math >}}$n${{< /math >}} are orthogonal, and {{< math >}}$I${{< /math >}} has a component along {{< math >}}$n${{< /math >}}. Right: {{< math >}}$m${{< /math >}} and {{< math >}}$n${{< /math >}} have an overlap.
 ![Activity along m](2Dorth.png)
 
-#### Figure 8: Same as figure {{< math >}}\ref{fig:2D_repro}{{< /math >}} but in the {{< math >}}$\tau_r \gg \tau_s${{< /math >}} scenario.
+#### Figure 8: Same as figure 7 but in the {{< math >}}$\tau_r \gg \tau_s${{< /math >}} scenario.
 ![Same as figure 2D but for the alternative model](2Dorth_alt.png)
 
 
