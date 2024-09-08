@@ -10,91 +10,98 @@ image:
 ---
 # Can you predict the tide ?
 
-**Cours : Information et Complexité**  
+**Course: Information and Complexity**  
 _Hugo Ninou_  
 April 2022
 
 ## Table of Contents
 
 1. [Introduction](#introduction)  
-2. [Analyse des données](#analyse-des-donnees)  
-    1. [Cartes de chaleur](#cartes-de-chaleur)  
-    2. [Autocorrélation du surplus de marée dans le temps](#autocorrelation-du-surplus-de-maree-dans-le-temps)  
-3. [Développement d'un réseau de neurones récurrent (RNN)](#developpement-dun-reseau-de-neurones-recurrent-rnn)  
-    1. [Le modèle Encoder-Decoder](#le-modele-encoder-decoder)  
-    2. [Division du jeu de données en training-set et testing-set](#division-du-jeu-de-donnees-en-training-set-et-testing-set)  
-    3. [Implémentation naïve sans utiliser les champs de pression](#implementation-naive-sans-utiliser-les-champs-de-pression)  
-    4. [Implémentation naïve en utilisant l'ensemble des champs de pression et de vent](#implementation-naive-en-utilisant-lensemble-des-champs-de-pression-et-de-vent)  
-    5. [Implémentation avec réduction de dimensionalité des champs de pression et de vent](#implementation-avec-reduction-de-dimensionalite-des-champs-de-pression-et-de-vent)  
+2. [Data Analysis](#data-analysis)  
+    1. [Heat Maps](#heat-maps)  
+    2. [Autocorrelation of the Tidal Surplus Over Time](#autocorrelation-of-the-tidal-surplus-over-time)  
+3. [Development of a Recurrent Neural Network (RNN)](#development-of-a-recurrent-neural-network-rnn)  
+    1. [The Encoder-Decoder Model](#the-encoder-decoder-model)  
+    2. [Splitting the Data into Training Set and Testing Set](#splitting-the-data-into-training-set-and-testing-set)  
+    3. [Naive Implementation Without Using Pressure Fields](#naive-implementation-without-using-pressure-fields)  
+    4. [Naive Implementation Using All Pressure and Wind Fields](#naive-implementation-using-all-pressure-and-wind-fields)  
+    5. [Implementation with Dimensionality Reduction of Pressure and Wind Fields](#implementation-with-dimensionality-reduction-of-pressure-and-wind-fields)  
 4. [Conclusion](#conclusion)
 
 ## Introduction
 
-Ce projet s'inscrit dans le cours Information et Complexité, et ambitionne de répondre au défi 'Can you predict the tide?'. Le défi consiste à prédire le surplus de marée à partir de mesures et champs de pression passés. L'objectif est de répondre de manière plus efficace aux événements de marées extrêmes. Dans ce rapport, nous détaillons notre démarche en deux temps : une analyse des données, suivie d'une implémentation d'un modèle _Encoder-Decoder_.
+This project is part of the course Information and Complexity and aims to address the challenge 'Can you predict the tide?'. The challenge, proposed by the FLUMINANCE team at Inria, consists of predicting the tidal surplus based on past measurements and pressure fields. A direct application of this challenge is to provide more efficient responses to extreme tidal events. In this report, we detail our approach, which is carried out in two stages: we first present key elements of the data analysis, and then propose a relevant implementation of an _Encoder-Decoder_ model to meet the challenge.
 
-## Analyse des données
+## Data Analysis
 
-### Cartes de chaleur
+### Heat Maps
 
-Nous avons commencé par étudier le jeu de données en effectuant une régression linéaire du surplus de marée en fonction des champs de pression. Les résultats sont présentés sous forme de cartes de chaleur (Figure 1). Nous observons une corrélation notable entre le surplus de marée et le champ de pression.
+To propose the most relevant algorithms to solve the given problem, we started by studying the dataset. A first approach consists of performing a linear regression of the tidal surplus at a given time based on each point of the pressure field at the same time. Prior to this, the values of the pressure field were centered and reduced. The correlation between the tidal surplus and the pressure field at a point provides us with the heatmap in Figure 1. Note that there are 5 times more pressure fields than points of tidal surplus. Therefore, linear regression is done by taking the pressure field closest in time to the tidal surplus. Blue areas correspond to points where a depression induces a positive tidal surplus, and conversely, red areas show the opposite. From this simple analysis, we can already suggest that City 1 is likely located in the Southeast quadrant of the map, while City 2 is likely in the Northwest quadrant.  
 
-Les dérivées spatiales du champ de pression, appelées vent horizontal et vent vertical, ont également été analysées, et les résultats sont visibles dans les figures \[2\] et \[3\]. Le vent horizontal semble contenir plus d'information pertinente.
+We can proceed similarly using the spatial derivatives of the pressure field, which we refer to as horizontal wind (derivative along the x-axis) and vertical wind (derivative along the y-axis). The results are shown in Figures 2 and 3. Overall, the horizontal wind appears to carry more information about the tidal surplus (the heat maps for the vertical wind contain many coefficients close to zero).
 
-#### Figure 1: Carte de chaleur de la corrélation entre le champ de pression centré réduit et le surplus de marée pour la ville 1 (gauche) et 2 (droite).
+#### Figure 1: Heatmap of the correlation between the centered and reduced pressure field and the tidal surplus for City 1 (left) and City 2 (right).
 ![heatmap1_p.png](heatmap1_p.png)
 
-#### Figure 2: Carte de chaleur de la corrélation entre le vent horizontal centré réduit et le surplus de marée pour la ville 1 (gauche) et 2 (droite).
+#### Figure 2: Heatmap of the correlation between the centered and reduced horizontal wind and the tidal surplus for City 1 (left) and City 2 (right).
 ![heatmap1_wh.png](heatmap1_wh.png)
 
-#### Figure 3: Carte de chaleur de la corrélation entre le vent vertical centré réduit et le surplus de marée pour la ville 1 (gauche) et 2 (droite).
+#### Figure 3: Heatmap of the correlation between the centered and reduced vertical wind and the tidal surplus for City 1 (left) and City 2 (right).
 ![heatmap1_wv.png](heatmap1_wv.png)
 
-### Autocorrélation du surplus de marée dans le temps
+### Autocorrelation of the Tidal Surplus Over Time
 
-Nous avons ensuite analysé l'autocorrélation du surplus de marée dans le temps pour les deux villes. Les résultats, visibles dans la figure \[4\], montrent une corrélation plus forte pour la ville 2 que pour la ville 1.
+We have briefly discussed the information that the pressure fields provide regarding the tidal surplus in Cities 1 and 2. In this section, we analyze the information that the time series of the tidal surplus carries about itself. One way to do this is by looking at the autocorrelation of the tidal surplus over time for Cities 1 and 2. After reordering the tidal surplus data in chronological order, we plotted the autocorrelation curves shown in Figure 4. One limitation of this approach is that the time intervals between consecutive points are irregular. On average, the interval is 9 hours, but about two-thirds of the points are evaluated at the same time as the previous point, likely due to an expansion of the dataset. Nonetheless, it is still possible to observe that the tidal surplus is quite autocorrelated over time, with a more marked correlation for City 2 than for City 1. Therefore, it will likely be much easier to infer accurate results for City 2 than for City 1, which is indeed what we observe when separating the scores for each city.
 
-#### Figure 4: Autocorrélation du surplus de marée pour la ville 1 (gauche) et 2 (droite).
+#### Figure 4: Autocorrelation of the tidal surplus for City 1 (left) and City 2 (right).
 ![autocorr1.png](autocorr1.png)
 
-## Développement d'un réseau de neurones récurrent (RNN)
+## Development of a Recurrent Neural Network (RNN)
 
-L'utilisation de réseaux de neurones pour des prédictions météorologiques est relativement récente. Nous nous sommes basés sur l'architecture _Encoder-Decoder_ pour notre modèle.
+The development of artificial neural networks for solving prediction problems in meteorology and climatology is relatively recent. Here, we draw inspiration from two articles that use an _Encoder-Decoder_ architecture   , which have demonstrated state-of-the-art performance for time series prediction.
 
-### Le modèle Encoder-Decoder
+### The Encoder-Decoder Model
 
-L'architecture est présentée dans la figure \[5\]. Le réseau est composé de cellules récurrentes (GRU) qui prennent en entrée une série temporelle et transmettent un _hidden vector_. Ce vecteur est ensuite passé au _decoder_, qui prédit le surplus de marée au temps \(t+1\).
+The architecture of the _Encoder-Decoder_ model that we implemented is shown in Figure 5. It consists of a sequence of recurrent cells (GRU cells) that take as input a vector from a time series and pass a "hidden vector" encoding the system state. Once the entire input sequence has been given to the encoder, the final "hidden vector" is passed to a decoder made of recurrent cells (decoder cells), which take the tidal surplus at time \(t\) as input and predict the tidal surplus at time \(t+1\). The implementation is done in Python using the Pytorch library.
 
-#### Figure 5: Architecture du modèle Encoder-Decoder implémenté.
+Regarding recurrent cells, several choices can be made. The basic cell consists of a simple matrix multiplication followed by the application of a non-linear function. This approach presents issues with learning (gradient explosion or vanishing gradients ). To address this, LSTM cells were developed. GRU cells are an alternative, offering fewer parameters while providing identical performance.
+
+The gradient descent is performed using the Adam method  with L2 regularization.
+
+#### Figure 5: Architecture of the implemented Encoder-Decoder model.
 ![encoder_decoder.pdf](encoder_decoder.pdf)
 
-### Division du jeu de données en training-set et testing-set
+### Splitting the Data into Training Set and Testing Set
 
-Nous avons divisé les données en _training set_ et _testing set_. Cependant, des disparités ont été observées dues à la proximité temporelle de certains points de données, nécessitant une révision de la segmentation.
+We started by dividing the dataset into a training set (90%) and a testing set (10%) randomly. However, large discrepancies were observed between the testing set score we created and that of the challenge. This was due to the fact that the dataset contains several points that are actually very close or sometimes overlapping in time, causing overfitting on the training set to affect the testing set. To remedy this, we split the dataset into blocks of consecutive time points that are thus correlated over time (refer to Figure 4).
 
-### Implémentation naïve sans utiliser les champs de pression
+### Naive Implementation Without Using Pressure Fields
 
-Une première tentative a été faite en utilisant uniquement la série temporelle des surplus de marée. Les résultats sont visibles dans la figure \[6\].
+A first attempt was made by using the neural network as presented in Figure 5, but only taking the time series of tidal surplus as input and ignoring the pressure and wind fields. To minimize the score, we fine-tuned the network's parameters, such as the number of layers within each cell, the size of the hidden vector, and the dropout rate (randomly ignoring a certain percentage of parameters during training). We found that with two layers, a hidden vector of size 25, and a dropout rate of 20%, we achieved a minimum score of 0.63. The evolution of the test score during training is shown in Figure 6.
 
-#### Figure 6: Scores pour le training set et test set en fonction des epochs d'apprentissage sans utiliser les champs de pression.
+#### Figure 6: Scores for the training set and test set over the epochs of learning in the naive implementation without using pressure fields.
 ![losses_no_slp.png](losses_no_slp.png)
 
-### Implémentation naïve en utilisant l'ensemble des champs de pression et de vent
+### Naive Implementation Using All Pressure and Wind Fields
 
-Nous avons ensuite ajouté les champs de pression et de vent au modèle. Les résultats montrent une légère amélioration, visible dans la figure \[7\].
+A second approach involved constructing a large vector comprising the tidal surplus in each city, along with the pressure and wind fields at the closest time (see Figure 7). The results obtained in this case are shown in Figure 8, using four layers, a hidden vector of size 200, and a dropout rate of 50%. This network achieved a minimum score of 0.57, which is a 5% improvement over the previous method but at the cost of a 25,000-fold increase in the number of parameters. A significant limitation of this implementation is the tendency for the model to overfit, despite L2 regularization, which forced us to use a very high dropout rate.
 
-#### Figure 7: Scores pour le training set et test set en fonction des epochs d'apprentissage en utilisant l'ensemble des champs de pression et de vent.
+#### Figure 7: Architecture with expanded input vectors including pressure and wind fields.
+![encoder_decoder_plus.pdf](encoder_decoder_plus.pdf)
+
+#### Figure 8: Scores for the training set and test set over the epochs of learning when using all pressure and wind fields.
 ![losses_whole.png](losses_whole.png)
 
-### Implémentation avec réduction de dimensionalité des champs de pression et de vent
+### Implementation with Dimensionality Reduction of Pressure and Wind Fields
 
-Nous avons proposé une méthode plus efficace en réduisant les dimensions des champs de pression et de vent. Cela a permis d'améliorer les résultats tout en réduisant considérablement le nombre de paramètres. Les résultats sont visibles dans la figure \[8\].
+Finally, we propose a less naive implementation of the neural network that leverages our data analysis. Instead of feeding the entire pressure and wind fields into the model, we compute a dot product between these fields and their associated heat maps. A field of size \(41\times41=1681\) is reduced to a vector of size 2 (one dimension per city). The input vector's size is thus reduced from 5045 to 8. With four layers for the recurrent cells and a hidden vector of size 25, we achieved a score of 0.5 (Figure 9, right), representing an 8% improvement over the naive method that included raw pressure and wind fields. This proposed method is more efficient and resource-conservative, requiring 5000 times fewer parameters.
 
-#### Figure 8: Scores pour le training set et test set en fonction des epochs d'apprentissage avec réduction de dimensionalité des champs de pression et de vent.
+#### Figure 9: Scores for the training set and test set over the epochs of learning with dimensionality reduction of pressure and wind fields.
 ![losses_with_slp_and_wind.png](losses_with_slp_and_wind.png)
 
 ## Conclusion
 
-Nous avons proposé une approche _Encoder-Decoder_ pour prédire le surplus de marée en nous basant sur une analyse minutieuse des données. La réduction de la dimensionnalité des champs de pression a permis d'améliorer les résultats et d'éviter le surapprentissage. Une optimisation supplémentaire pourrait inclure les champs de pression antérieurs pour une meilleure prédiction.
+Based on a thorough data analysis, we proposed an _Encoder-Decoder_ model to tackle the challenge. In the context of the _Encoder-Decoder_ model, the issue of compressing the information contained in the pressure field is central. Feeding the network with raw pressure fields leads to overfitting problems, which are difficult to resolve. The method we propose, which reduces entire fields to a single scalar, may be extreme but offers good explainability and yields very good results. The optimal approach likely lies somewhere between these two extremes, avoiding translation-invariant compression methods, as the location of depressions and winds is crucial for solving the problem.
 
 ---
 
