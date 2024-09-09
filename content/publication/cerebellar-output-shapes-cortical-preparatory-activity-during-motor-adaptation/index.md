@@ -35,7 +35,7 @@ draft: false
 featured: true
 image:
   filename: capture-d’écran-2024-09-09-à-15.49.03.png
-  focal_point: Smart
+  focal_point: Center
   preview_only: false
 date: 2024-09-04T02:01:55.531Z
 ---
