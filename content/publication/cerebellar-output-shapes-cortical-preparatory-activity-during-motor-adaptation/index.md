@@ -34,7 +34,7 @@ abstract: The cerebellum plays a key role in motor adaptation by driving
 draft: false
 featured: true
 image:
-  filename: capture-d’écran-2024-09-09-à-15.59.42.png
+  filename: capture-d’écran-2024-09-09-à-16.02.46.png
   focal_point: Center
   preview_only: false
 date: 2024-09-04T02:01:55.531Z
