@@ -13,8 +13,8 @@ authors:
   - Yifat Prut
 doi: https://doi.org/10.1101/2024.07.12.603354
 links:
-- name: Poster
-  url: assets/media/poster_cosynev2-3-.pdf
+- name: COSYNE 2024 Poster
+  url: "poster_cosynev2-3-.pdf"
 abstract: The cerebellum plays a key role in motor adaptation by driving
   trial-to-trial recalibration of movements based on previous errors. In
   primates, this adaptive response is achieved by cerebellar modulation of motor
