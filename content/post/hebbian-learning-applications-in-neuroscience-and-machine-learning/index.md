@@ -1,7 +1,7 @@
 ---
 title: "Hebbian learning : Applications in neuroscience and machine learning"
 date: 2024-09-09T15:12:31.360Z
-draft: false
+draft: true
 featured: false
 image:
   filename: featured
