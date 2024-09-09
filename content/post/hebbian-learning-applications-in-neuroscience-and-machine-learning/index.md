@@ -1,14 +1,34 @@
 ---
 title: "Hebbian learning : Applications in neuroscience and machine learning"
 date: 2024-09-09T15:12:31.360Z
-draft: true
+draft: false
 featured: false
 image:
   filename: featured
   focal_point: Smart
   preview_only: false
 ---
-### Blog Post: Hebbian Learning – Comprehensive Exploration of Neuroscience and Machine Learning Applications
+## Table of Contents
+
+1. [Introduction](#introduction)
+2. [What Defines an Intelligent System?](#1-what-defines-an-intelligent-system)
+3. [Modeling Approaches in Neuroscience](#2-modeling-approaches-in-neuroscience)
+   - [Mechanistic Models: The "How" Question](#21-mechanistic-models-the-how-question)
+   - [Normative Models: The "Why" Question](#22-normative-models-the-why-question)
+4. [Learning Paradigms in Machine Learning](#3-learning-paradigms-in-machine-learning)
+5. [Experimental Evidence of Hebbian Learning](#4-experimental-evidence-of-hebbian-learning)
+   - [Long-Term Potentiation (LTP) and Long-Term Depression (LTD)](#41-long-term-potentiation-ltp-and-long-term-depression-ltd)
+   - [Inhibitory Plasticity](#42-inhibitory-plasticity)
+6. [Hebbian Learning in Machine Learning](#5-hebbian-learning-in-machine-learning)
+   - [Hebbian Learning for Principal Component Analysis (PCA)](#51-hebbian-learning-for-principal-component-analysis-pca)
+   - [Hebbian Learning for Memory Retrieval](#6-hebbian-learning-for-memory-retrieval)
+     - [Hopfield Networks](#61-hopfield-networks)
+     - [Modern Hopfield Networks](#62-modern-hopfield-networks)
+     - [Hopfield Networks with Inhibitory Neurons](#63-hopfield-networks-with-inhibitory-neurons)
+7. [Normative Approaches to Memory Retrieval](#7-normative-approaches-to-memory-retrieval)
+8. [Mathematical Extensions of Hebbian Learning](#8-mathematical-extensions-of-hebbian-learning)
+9. [Conclusion](#9-conclusion)
+
 
 **Introduction**
 
