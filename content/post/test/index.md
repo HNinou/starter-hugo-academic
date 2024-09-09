@@ -12,7 +12,7 @@ summary: "This project is part of the course Information and Complexity and aims
 draft: false
 featured: false
 image:
-  filename: featured
+  filename: capture-d’écran-2024-09-09-à-15.19.51.png
   focal_point: Smart
   preview_only: false
 ---
