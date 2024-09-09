@@ -1,14 +1,11 @@
 ---
 title: "Data challenge : Can you predict the tide ?"
 date: 2023-05-01T07:04:36.940Z
-summary: "This project is part of the course Information and Complexity and aims
-  to address the challenge 'Can you predict the tide?'. The challenge, proposed
-  by the FLUMINANCE team at Inria, consists of predicting the tidal surplus
-  based on past measurements and pressure fields. A direct application of this
-  challenge is to provide more efficient responses to extreme tidal events. In
-  this report, we detail our approach, which is carried out in two stages: we
-  first present key elements of the data analysis, and then propose a relevant
-  implementation of an *Encoder-Decoder* model to meet this challenge."
+summary: This project, tackles the challenge of predicting tidal surges,
+  proposed by the FLUMINANCE team at Inria. Using past data and pressure fields,
+  the goal is to improve responses to extreme tidal events. My approach to
+  addressing this challenge involves detailed data analysis followed by the
+  implementation of an Encoder-Decoder model.
 draft: false
 featured: false
 image:
