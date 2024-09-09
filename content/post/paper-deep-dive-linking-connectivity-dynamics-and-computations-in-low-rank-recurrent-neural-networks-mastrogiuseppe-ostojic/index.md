@@ -19,7 +19,7 @@ featured: false
 image:
   filename: capture-d’écran-2024-09-09-à-15.18.02.png
   focal_point: Smart
-  preview_only: false
+  preview_only: true
 ---
 ## Table of Contents
 1. [Introduction](#introduction)
