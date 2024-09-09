@@ -2,6 +2,18 @@
 title: "Paper deep dive : Linking connectivity, dynamics and computations in
   low-rank recurrent neural networks, Mastrogiuseppe & Ostojic, 2018"
 date: 2024-09-08T15:36:22.897Z
+summary: "Cortical networks, which consist in highly interconnected neurons with
+  recurrent synapses are believed to make for the fundamental units of mammalian
+  brains. Observations show that cortical connectivity lies somewhere between
+  fully structured and fully random. Several functional approaches have been
+  made for connectivity design of cortical networks since the 80's but they lack
+  a unifying conceptual picture. To address this matter, authors point out that
+  all these approaches share something in common: the fact that the resulting
+  connectivity matrices are low rank. This article [1] aims at linking the
+  recurrent neural networks' dynamics to their connectivity matrix and showing
+  how one can design the low-rank connectivity structure of such networks to
+  implement specific computations. The latter point is illustrated on four
+  specific tasks."
 draft: false
 featured: false
 image:
