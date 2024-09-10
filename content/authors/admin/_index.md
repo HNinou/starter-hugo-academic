@@ -27,8 +27,8 @@ social:
 organizations:
   - name: Ecole normale supérieure | PSL
     url: https://www.ens.psl.eu
-  - name: Laboratoire de Physique de l'Ecole normale supérieure
-    url: https://www.lpens.ens.psl.eu
+  - name: Département d'études cognitives de l'Ens
+    url: https://cognition.ens.fr/fr
 education:
   courses:
     - course: PhD student in Physics and Computational Neuroscience
