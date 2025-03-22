@@ -119,8 +119,8 @@ Based on a thorough data analysis, we proposed an *Encoder-Decoder* model to tac
 
 ### References
 
-* Sebastian Scher and Gabriele Messori. Weather and climate forecasting with neural networks: using general circulation models (GCMs) with dif- ferent complexity as a study ground. *Geoscientific Model Development*, 12(7):2797–2809, July 2019.
-* Nathawut Phandoidaen and Stefan Richter. Forecasting time series with encoder-decoder neural networks. *arXiv:2009.08848 \[math, stat]*, September 2020. arXiv: 2009.08848.
-* Encoder-Decoder Model for Multistep Time Series Forecasting Using Py- Torch | by Gautham Kumaran | Towards Data Science.
-* Razvan Pascanu, Tomas Mikolov, and Yoshua Bengio. On the difficulty of training Recurrent Neural Networks. *arXiv:1211.5063 \[cs]*, February 2013. arXiv: 1211.5063.
-* Diederik P. Kingma and Jimmy Ba. Adam: A Method for Stochastic Opti- mization. *arXiv:1412.6980 \[cs]*, January 2017. arXiv: 1412.6980.
+* [1] Sebastian Scher and Gabriele Messori. Weather and climate forecasting with neural networks: using general circulation models (GCMs) with dif- ferent complexity as a study ground. *Geoscientific Model Development*, 12(7):2797–2809, July 2019.
+* [2] Nathawut Phandoidaen and Stefan Richter. Forecasting time series with encoder-decoder neural networks. *arXiv:2009.08848 \[math, stat]*, September 2020. arXiv: 2009.08848.
+* [3] Encoder-Decoder Model for Multistep Time Series Forecasting Using Py- Torch | by Gautham Kumaran | Towards Data Science.
+* [4] Razvan Pascanu, Tomas Mikolov, and Yoshua Bengio. On the difficulty of training Recurrent Neural Networks. *arXiv:1211.5063 \[cs]*, February 2013. arXiv: 1211.5063.
+* [5] Diederik P. Kingma and Jimmy Ba. Adam: A Method for Stochastic Opti- mization. *arXiv:1412.6980 \[cs]*, January 2017. arXiv: 1412.6980.
