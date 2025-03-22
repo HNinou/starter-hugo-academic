@@ -37,10 +37,10 @@ education:
     - course: ENS disploma, Major in Physics
       year: 2022
       institution: Ecole normale supérieure | PSL
-    - course: Master MVA (Mathematics Applied to ML)
+    - course: Master MVA (Applied Mathematics, Vision, Machine Learning)
       institution: Ecole normale supérieure Paris Saclay
       year: 2022
-    - course: Master ICFP in Theoretical Physics
+    - course: Master ICFP, Theoretical Physics
       institution: Ecole normale supérieure | PSL
       year: 2021
 superuser: true
