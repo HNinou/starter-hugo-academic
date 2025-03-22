@@ -40,7 +40,7 @@ abstract: >-
   Check out the full paper at [https://www.nature.com/articles/s41467-025-57832-4](https://www.nature.com/articles/s41467-025-57832-4)
 draft: false
 featured: true
-date: 2024-09-04T02:01:55.531Z
+date: 2025-03-22T15:14:45.835Z
 links:
   - name: COSYNE 2024 Poster
     url: poster_cosyne_reduced.png
