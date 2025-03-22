@@ -31,7 +31,7 @@ organizations:
     url: https://cognition.ens.fr/fr
 education:
   courses:
-    - course: PhD student in Physics and Computational Neuroscience
+    - course: PhD student in Computational and Theoretical Neuroscience
       institution: Ecole normale supérieure | PSL
       year: ""
     - course: ENS disploma, Major in Physics
