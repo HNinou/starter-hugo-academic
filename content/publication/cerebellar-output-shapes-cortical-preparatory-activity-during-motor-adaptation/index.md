@@ -1,7 +1,7 @@
 ---
 title: Cerebellar output shapes cortical preparatory activity during motor adaptation
 publication_types:
-  - "3"
+  - "2"
 authors:
   - Sharon Israely
   - Hugo Ninou
@@ -11,10 +11,8 @@ authors:
   - Firas Mawase
   - Jonathan Kadmon
   - Yifat Prut
-doi: https://doi.org/10.1101/2024.07.12.603354
-links:
-- name: COSYNE 2024 Poster
-  url: "poster_cosyne_reduced.png"
+publication: Nature communications
+publication_short: ""
 abstract: The cerebellum plays a key role in motor adaptation by driving
   trial-to-trial recalibration of movements based on previous errors. In
   primates, this adaptive response is achieved by cerebellar modulation of motor
@@ -36,9 +34,13 @@ abstract: The cerebellum plays a key role in motor adaptation by driving
   are harnessed to partially restore adaptation.
 draft: false
 featured: true
+date: 2024-09-04T02:01:55.531Z
+links:
+  - name: COSYNE 2024 Poster
+    url: poster_cosyne_reduced.png
+doi: https://doi.org/10.1038/s41467-025-57832-4
 image:
   filename: capture-d’écran-2024-09-09-à-16.10.01.png
   focal_point: Center
   preview_only: false
-date: 2024-09-04T02:01:55.531Z
 ---
