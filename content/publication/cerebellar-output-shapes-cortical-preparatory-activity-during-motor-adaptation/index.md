@@ -1,7 +1,7 @@
 ---
 title: "Cerebellar output shapes cortical preparatory activity during motor
   adaptation "
-subtitle: Nature communications
+subtitle: ""
 publication_types:
   - "2"
 authors:
@@ -13,7 +13,7 @@ authors:
   - Firas Mawase
   - Jonathan Kadmon
   - Yifat Prut
-publication: ""
+publication: Nature communications
 publication_short: ""
 abstract: >-
   The cerebellum plays a key role in motor adaptation by driving trial-to-trial
