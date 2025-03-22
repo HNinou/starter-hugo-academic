@@ -34,7 +34,7 @@ education:
     - course: PhD student in Computational and Theoretical Neuroscience
       institution: Ecole normale supérieure | PSL
       year: ""
-    - course: ENS disploma, Major in Physics
+    - course: ENS Paris diploma, Major in Physics
       year: 2022
       institution: Ecole normale supérieure | PSL
     - course: Master MVA, Applied Mathematics, Vision, Machine Learning
