@@ -13,12 +13,13 @@ authors:
   - Yifat Prut
 publication: Nature communications
 publication_short: ""
-abstract: The cerebellum plays a key role in motor adaptation by driving
-  trial-to-trial recalibration of movements based on previous errors. In
-  primates, this adaptive response is achieved by cerebellar modulation of motor
-  cortical signals, but the nature and timing of this process are unknown.
-  Specifically, cortical correlates of adaptation are encoded already in the
-  pre-movement motor plan, but these early cortical signals could be driven by a
+abstract: >-
+  The cerebellum plays a key role in motor adaptation by driving trial-to-trial
+  recalibration of movements based on previous errors. In primates, this
+  adaptive response is achieved by cerebellar modulation of motor cortical
+  signals, but the nature and timing of this process are unknown. Specifically,
+  cortical correlates of adaptation are encoded already in the pre-movement
+  motor plan, but these early cortical signals could be driven by a
   cerebellar-to-cortical information flow or evolve independently through
   intracortical mechanisms. To address this question, we trained monkeys to
   reach against a viscous force field while blocking cerebellar outflow. During
@@ -32,6 +33,9 @@ abstract: The cerebellum plays a key role in motor adaptation by driving
   constrains the dimensionality of the cortical preparatory manifold and
   promotes generalization. In the absence of these signals, cortical mechanisms
   are harnessed to partially restore adaptation.
+
+
+  Check out the full paper at [https://www.nature.com/articles/s41467-025-57832-4](https://www.nature.com/articles/s41467-025-57832-4)
 draft: false
 featured: true
 date: 2024-09-04T02:01:55.531Z
