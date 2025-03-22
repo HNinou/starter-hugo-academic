@@ -53,6 +53,6 @@ title: Hugo Ninou
 first_name: Alice
 email: ""
 ---
-I am a PhD student in statistical physics applied to neuroscience at ENS Paris. My work focuses on the control of maturating biological neural networks
+I am a PhD student in theoretical and computational neuroscience at ENS Paris. My work focuses on learning dynamics in billogically plausible neural networks.
 
 {style="text-align: justify;"}
