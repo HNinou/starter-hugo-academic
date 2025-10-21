@@ -31,7 +31,9 @@ date: 2025-10-15T15:55:16.790Z
 ---
 ###### Motivation for non-gradient learning dynamics
 
-Neural networks using unsupervised learning rules, such as Hebbian plasticity, can be shown to minimize objective functions like those for feature extraction, but only when paired with specific architectures [[Pehlevan et al. 2015, Neural Computation](https://ieeexplore.ieee.org/abstract/document/7226488)]. For instance, the learning dynamics of a recurrent neural network composed solely of excitatory neurons equipped with Hebbian plasticity can be derived as gradient descent on an objective function. However, not all learning dynamics follow a gradient: for example, introducing inhibitory neurons with plastic synapses governed by the same Hebbian rule will render the learning dynamics provably non-gradient (Fig. A). Mathematically, this occurs because the first-order recurrent terms in the neural activity, y=(I+WD)f (where f is an external input and D is a diagonal matrix with elements ±1 for neuron types), introduce non-symmetric terms into the weight update equations that cannot be derived from any scalar potential. This illustrates a more general principle: while certain architectures can be framed as performing gradient descent, many biologically plausible scenarios featuring diverse populations naturally give rise to learning dynamics that combine a gradient term with a non-gradient component.
+Neural networks using unsupervised learning rules, such as Hebbian plasticity, can be shown to minimize objective functions like those for feature extraction, but only when paired with specific architectures [[Pehlevan et al. 2015, Neural Computation](https://ieeexplore.ieee.org/abstract/document/7226488)]. For instance, the learning dynamics of a recurrent neural network composed solely of excitatory neurons equipped with Hebbian plasticity can be derived as gradient descent on an objective function. However, not all learning dynamics follow a gradient: for example, introducing inhibitory neurons with plastic synapses governed by the same Hebbian rule will render the learning dynamics provably non-gradient (Fig. A). Mathematically, this occurs because the first-order recurrent terms in the neural activity, y=(I+WD)f (where f is an external input and D is a diagonal matrix with elements ±1 for neuron types), introduce non-symmetric terms into the weight update equations that cannot be derived from any scalar potential. This illustrates a more general principle: while certain architectures can be framed as performing gradient descent, many biologically plausible scenarios featuring diverse populations naturally give rise to learning dynamics that combine a gradient term with a non-gradient component. 
+
+[full article available here.](https://doi.org/10.48550/arXiv.2510.02765)
 
 ###### Curl descent framework
 
@@ -51,7 +53,7 @@ Taken together, our theoretical and numerical results reveal that networks featu
 
 Our results suggest that strict adherence to a global gradient may not always be the most efficient learning strategy. The diversity of plasticity rules observed experimentally might allow biological circuits to leverage non-gradient dynamics for more rapid and effective optimization. Our framework sets the foundation for investigating whether non-gradient learning dynamics can account for phenomena such as representational drift, where ongoing synaptic reorganization occurs without impairing performance, and ultimately provides theoretical insights into the conditions under which neural circuits learn in the real world.
 
-
+Read the full story[ here.](https://doi.org/10.48550/arXiv.2510.02765)
 
 ![](cosyne2026_figure.png)
 
