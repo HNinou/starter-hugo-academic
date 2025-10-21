@@ -1,4 +1,6 @@
 ---
+title: Hugo Ninou
+role: PhD student in theoretical and computational neuroscience
 avatar_filename: avatar.jpg
 bio: ""
 interests:
@@ -47,12 +49,10 @@ superuser: true
 status:
   icon: ☕️
 last_name: Wu
-role: PhD student in theoretical and computational neuroscience
 highlight_name: true
-title: Hugo Ninou
 first_name: Alice
 email: ""
 ---
-I am a PhD student in theoretical and computational neuroscience at ENS Paris. My work focuses on learning dynamics in billogically plausible neural networks.
+I am a PhD student in theoretical and computational neuroscience at ENS Paris. I'm passionate about drawing inspiration from biological learning to design more effective AI systems. 
 
 {style="text-align: justify;"}
