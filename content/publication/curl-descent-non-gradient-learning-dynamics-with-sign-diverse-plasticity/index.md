@@ -8,19 +8,22 @@ authors:
   - N. Alex Cayco-Gajic
 doi: https://doi.org/10.48550/arXiv.2510.02765
 publication: NeurIPS 2025 Spotlight
-abstract: "Learning in large neural networks requires solving the credit
-  assignment problem: how can individual synapses be updated to improve global
-  performance? Normative theories assert that synaptic weights should be
-  adjusted proportionally to a local gradient estimate to descend a global
-  objective function. Recent years have seen various proposals for biologically
-  plausible learning rules that approximate gradient descent in neural networks.
-  However, this view is difficult to reconcile with the  diversity of plasticity
-  rules observed experimentally. This diversity means that weight updates may
-  not always align with a global gradient, introducing fundamentally
-  non-gradient components into the learning dynamics. This problem is often
-  overlooked when training artificial neural network models, raising our central
-  question: Can networks still learn effectively when their dynamics include
-  non-gradient terms?"
+abstract: >-
+  Learning in large neural networks requires solving the credit assignment
+  problem: how can individual synapses be updated to improve global performance?
+  Normative theories assert that synaptic weights should be adjusted
+  proportionally to a local gradient estimate to descend a global objective
+  function. Recent years have seen various proposals for biologically plausible
+  learning rules that approximate gradient descent in neural networks. However,
+  this view is difficult to reconcile with the  diversity of plasticity rules
+  observed experimentally. This diversity means that weight updates may not
+  always align with a global gradient, introducing fundamentally non-gradient
+  components into the learning dynamics. This problem is often overlooked when
+  training artificial neural network models, raising our central question: Can
+  networks still learn effectively when their dynamics include non-gradient
+  terms?
+
+  [full article available here.](https://doi.org/10.48550/arXiv.2510.02765)
 draft: false
 featured: true
 image:
@@ -32,8 +35,6 @@ date: 2025-10-15T15:55:16.790Z
 ###### Motivation for non-gradient learning dynamics
 
 Neural networks using unsupervised learning rules, such as Hebbian plasticity, can be shown to minimize objective functions like those for feature extraction, but only when paired with specific architectures [[Pehlevan et al. 2015, Neural Computation](https://ieeexplore.ieee.org/abstract/document/7226488)]. For instance, the learning dynamics of a recurrent neural network composed solely of excitatory neurons equipped with Hebbian plasticity can be derived as gradient descent on an objective function. However, not all learning dynamics follow a gradient: for example, introducing inhibitory neurons with plastic synapses governed by the same Hebbian rule will render the learning dynamics provably non-gradient (Fig. A). Mathematically, this occurs because the first-order recurrent terms in the neural activity, y=(I+WD)f (where f is an external input and D is a diagonal matrix with elements ±1 for neuron types), introduce non-symmetric terms into the weight update equations that cannot be derived from any scalar potential. This illustrates a more general principle: while certain architectures can be framed as performing gradient descent, many biologically plausible scenarios featuring diverse populations naturally give rise to learning dynamics that combine a gradient term with a non-gradient component. 
-
-[full article available here.](https://doi.org/10.48550/arXiv.2510.02765)
 
 ###### Curl descent framework
 
