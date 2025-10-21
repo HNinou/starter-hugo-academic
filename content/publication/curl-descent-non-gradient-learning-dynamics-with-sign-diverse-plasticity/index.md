@@ -1,5 +1,6 @@
 ---
-title: "Curl Descent: Non-Gradient Learning Dynamics with Sign-Diverse Plasticity"
+title: "[Curl Descent: Non-Gradient Learning Dynamics with Sign-Diverse
+  Plasticity](https://doi.org/10.48550/arXiv.2510.02765)"
 publication_types:
   - "1"
 authors:
