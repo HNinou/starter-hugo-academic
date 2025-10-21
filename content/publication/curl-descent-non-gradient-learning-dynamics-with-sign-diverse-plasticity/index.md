@@ -23,6 +23,7 @@ abstract: >-
   networks still learn effectively when their dynamics include non-gradient
   terms?
 
+
   [full article available here.](https://doi.org/10.48550/arXiv.2510.02765)
 draft: false
 featured: true
